@@ -8,61 +8,64 @@ if(Math.floor(Math.random()*3)===0){
 };
 
 
-//console.log(computerPlay());
-
-const choice=['Rock','Paper','Scissors'];
-
-
 function playRound(playerSelection,computerSelection){
     
+    playerSelection = this.id;
+    console.log(playerSelection);
+ 
+    computerSelection = computerPlay();
     console.log(computerSelection);
     
     if(playerSelection==computerSelection){
-        return "That's a tie.";
-    } else if(playerSelection==choice[0]){
-               if(computerSelection==choice[1]){
-                   return false;
+        alert("That's a tie.");
+    } else if(playerSelection=='Rock'){
+               if(computerSelection=='Paper'){
+                   alert('You Lose!');
                } else
-        return true;
-    } else if(playerSelection==choice[1] ){
-                 if(computerSelection==choice[0]){
-                     return true;
+        return alert('You Win!');
+    } else if(playerSelection=='Paper' ){
+                 if(computerSelection=='Rock'){
+                     alert('You Win!');
                  } else
-        return false;
-    } else if(playerSelection==choice[2]){
-                 if(computerSelection==choice[0]){
-                     return false;
+        return alert('You Lose!');
+    } else if(playerSelection=='Scissors'){
+                 if(computerSelection=='Rock'){
+                     return alert('You Lose!');
                  } else
-        return true;     
+        return alert('You Win!');     
     }   
 }
 
-
-
-
-
-function game(){
-    let score={
-        player:0,
-        comp:0
-    };
+// function game(){
+//     let score={
+//         player:0,
+//         comp:0
+//     };
     
-    for(let i=0;i<5;i++){
-        const computerSelection = computerPlay();
-        const playerSelection = prompt("Rock,Paper,Scissors?");
-        console.log(playRound(playerSelection, computerSelection));
+//     for(let i=0;i<5;i++){
+//         const computerSelection = computerPlay();
+//         const playerSelection = prompt("Rock,Paper,Scissors?");
+//         console.log(playRound(playerSelection, computerSelection));
 
-        if(playRound(playerSelection,computerSelection)===true){
-            score.player+=1;
-            console.log(score);
-        } else if(playRound(playerSelection,computerSelection)===false){
-            score.comp+=1;
-            console.log(score);
-        } else {
-           console.log(score);
-        }
-    }
-    return `Player scores ${score.player} and Computer scores ${score.comp}`;
-}
+//         if(playRound(playerSelection,computerSelection)===true){
+//             score.player+=1;
+//             console.log(score);
+//         } else if(playRound(playerSelection,computerSelection)===false){
+//             score.comp+=1;
+//             console.log(score);
+//         } else {
+//            console.log(score);
+//         }
+//     }
+//     return `Player scores ${score.player} and Computer scores ${score.comp}`;
+// }
 
-console.log(game());
+// console.log(game());
+
+// function play(){
+//  console.log(this.textContent)
+// }
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button=>button.addEventListener('click',playRound));
+
